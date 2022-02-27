@@ -1,3 +1,4 @@
+from fileinput import filename
 import pandas as pd
 
 def check_for_table_file(check, name):
@@ -18,5 +19,20 @@ def create_file(file_name, data, columns, index=False):
 	return df
 	
 
-def read_file(file_name):
-	return pd.read_csv(file_name, header=0)
+def read_table_file(file_name):
+	try:
+		df = pd.read_csv(f"{file_name}.csv", header=0)
+		return df
+	except:
+		raise Exception("El archivo no existe!")
+
+def get_my_subjects(file_name):
+	lines = []
+	try:
+		with open(file_name, 'r') as f:
+			for line in f:
+				lines.append(f)
+	except:
+		raise Exception("El archivo no existe!")
+
+	return lines
