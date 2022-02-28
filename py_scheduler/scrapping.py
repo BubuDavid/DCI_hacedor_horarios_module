@@ -14,17 +14,17 @@ def get_rows(page):
 def get_column_names(column_names):
 	table_column_names = []
 	for data in column_names: # Ignoring the index
-		table_column_names.append(normalize(data.strip()))
+		table_column_names.append(super_normalize(data.strip()))
 
 	return table_column_names
 
 def get_content_rows(rows):
 	pd_rows = []
-	for row in rows:
-		pd_row = [] # Note is different from pd_rows
+	for index, row in enumerate(rows):
+		pd_row = [index] # Note is different from pd_rows
 		for data in row.find_all('td')[1:]:
 			text = data.text.strip()
-			normalized_text = normalize(text)
+			normalized_text = super_normalize(text)
 			pd_row.append(normalized_text) # Save the rows
 		pd_rows.append(pd_row)
 

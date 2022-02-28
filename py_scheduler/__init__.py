@@ -2,6 +2,8 @@ from .scrapping import *
 from .file_tools import *
 from .tools import *
 from .table_tools import *
+from .permutations import *
+from .subject_tools import *
 
 def generate_subject_file(url, file_name, colum_names):
 	# Request the page

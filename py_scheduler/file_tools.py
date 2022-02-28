@@ -1,4 +1,3 @@
-from fileinput import filename
 import pandas as pd
 
 def check_for_table_file(check, name):
@@ -31,7 +30,7 @@ def get_my_subjects(file_name):
 	try:
 		with open(file_name, 'r') as f:
 			for line in f:
-				lines.append(f)
+				lines.append(line)
 	except:
 		raise Exception("El archivo no existe!")
 
