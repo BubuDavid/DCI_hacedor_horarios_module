@@ -34,9 +34,6 @@ def filter_permutations(permutation):
 
 			for time_range in days[time_zone.day]:
 				if current_time_range.is_overlapping(time_range):
-					# print("===============")
-					# print_subject_list(permutation)
-					# print("===============")
 					return False
 
 			days[time_zone.day].append(current_time_range)

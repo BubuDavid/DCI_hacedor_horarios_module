@@ -1,7 +1,19 @@
+from textwrap import indent
 from typing import List
 from .day import Day
+import json
 
 class Subject:
+	param_list = [
+	'_id',
+	'name',
+	'group',
+	'time_zones',
+	'professor1',
+	'professor_email1',
+	'professor2',
+	'professor_email2',
+	]
 	def __init__(
 		self,
 		_id             : int,
@@ -33,6 +45,16 @@ class Subject:
 					for index, day in enumerate(getattr(self, d)):
 						params += f"Day{index+1}: {str(day)}\n"
 
-		print(params)
-		return "Ready"
+		return params
+
+	def for_jsonify(self):
+		sub_json = {}
+		for param in self.param_list:
+			if "time_zones" not in param:
+				sub_json[param] = getattr(self, param)
+			else:
+				for index, day in enumerate(getattr(self, param)):
+					sub_json[f"day{index + 1}"] = day.for_jsonify()
+
+		return sub_json
 		

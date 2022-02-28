@@ -4,7 +4,7 @@ from py_scheduler import *
 Needs:
 url:          string   -> The url of the page
 subjects:     [string] -> List of subjects to check (Maybe in a file)
-time_columns: [int]    -> List of indexes of the columns with the day/hour/room names
+column_names  [string] -> List of the names of the columns in the csv
 """
 
 url = "http://www.dci.ugto.mx/estudiantes/index.php/mcursos/horarios-licenciatura"
@@ -50,6 +50,9 @@ def main():
 	all_permutations = make_permutations(all_my_subjects)
 	# ============ Filter the validate permutations (no overlap) ============ #
 	validated_permutations = list(filter(filter_permutations, all_permutations))
+	# ============ Transform the Subject List into a JSON ============ #
+	my_subjects_json = from_subjects_to_json(validated_permutations)
+	print(my_subjects_json)
 
 if __name__ == "__main__":
 	main()

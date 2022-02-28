@@ -1,4 +1,5 @@
 import math
+import json 
 
 from .models.subject import Subject
 from .models.day import Day, TimeRange
@@ -83,3 +84,16 @@ def print_subject_list(subjects):
 	for subject in subjects:
 		print(subject)
 		print('--------')
+
+def from_subjects_to_json(all_subjects):
+	all_subjects_json = []
+	for subjects in all_subjects:
+		subjects_json = []
+		for subject in subjects:
+			subjects_json.append(subject.for_jsonify())
+
+		all_subjects_json.append(subjects_json)
+
+	return json.dumps(all_subjects_json, indent=2)
+
+

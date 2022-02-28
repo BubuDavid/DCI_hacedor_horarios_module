@@ -1,3 +1,4 @@
+import json
 from typing import List
 
 class TimeRange:
@@ -22,6 +23,9 @@ class TimeRange:
 			return False
 
 		return True
+
+	def for_jsonify(self):
+		return self.time_range
 		
 
 class Day:
@@ -36,3 +40,11 @@ class Day:
 
 	def __str__(self):
 		return f"{self.day}/{str(self.time_range)}/{self.room}"
+
+	def for_jsonify(self):
+		day_json = []
+		day_json.append(self.day)
+		day_json.append(self.time_range.for_jsonify())
+		day_json.append(self.room)
+
+		return day_json
