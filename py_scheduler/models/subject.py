@@ -1,4 +1,3 @@
-from textwrap import indent
 from typing import List
 from .day import Day
 import json
@@ -18,12 +17,12 @@ class Subject:
 		self,
 		_id             : int,
 		name            : str,
-		group           : str,
 		time_zones      : List[Day],
-		professor1      : str,
-		professor_email1: str,
-		professor2      : str,
-		professor_email2: str,
+		group           : str = None,
+		professor1      : str = None,
+		professor_email1: str = None,
+		professor2      : str = None,
+		professor_email2: str = None,
 		**kwargs
 	) -> None:
 		self._id              = _id

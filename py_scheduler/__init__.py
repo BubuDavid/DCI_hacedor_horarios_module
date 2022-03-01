@@ -1,7 +1,6 @@
 from .scrapping import *
 from .file_tools import *
 from .tools import *
-from .table_tools import *
 from .permutations import *
 from .subject_tools import *
 

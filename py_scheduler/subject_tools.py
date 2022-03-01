@@ -1,5 +1,6 @@
 import math
-import json 
+import json
+from re import L 
 
 from .models.subject import Subject
 from .models.day import Day, TimeRange
@@ -68,6 +69,7 @@ def from_df_to_subjects(df):
 
 	return subjects
 
+
 def filter_my_subjects(my_subjects_list, all_subjects):
 	# Normalize my subjects
 	my_norm_subs = list(map(super_normalize, my_subjects_list))
@@ -85,7 +87,7 @@ def print_subject_list(subjects):
 		print(subject)
 		print('--------')
 
-def from_subjects_to_json(all_subjects):
+def from_subjects_to_json(all_subjects, jsonified = True):
 	all_subjects_json = []
 	for subjects in all_subjects:
 		subjects_json = []
@@ -94,6 +96,29 @@ def from_subjects_to_json(all_subjects):
 
 		all_subjects_json.append(subjects_json)
 
-	return json.dumps(all_subjects_json, indent=2)
+	if jsonified:
+		return json.dumps(all_subjects_json, indent=2)
+		
+	return all_subjects
 
+def from_fields_to_subject(fields):
+	sub_items = {}
+	for c_name, value in fields.items():
+		sub_items[c_name.lower()] = value
+	
+	sub_items["time_zones"] = create_days(sub_items)
+	return Subject(**sub_items)
 
+def from_json_to_subjects(json_subs):
+	subjects = []
+	for record in json_subs:
+		fields = record["fields"]
+		fields = manage_row_exceptions(fields)
+		try:
+			subjects.append(from_fields_to_subject(fields))
+		except Exception as e:
+			print("Hubo un error en:")
+			print(fields)
+			raise Exception(e)
+
+	return subjects

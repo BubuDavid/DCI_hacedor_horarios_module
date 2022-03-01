@@ -12,7 +12,6 @@ url = "http://www.dci.ugto.mx/estudiantes/index.php/mcursos/horarios-licenciatur
 my_subjects = [
 	"Cálculo de Varias Variables",
 	"Ecuaciones Diferenciales Ordinarias",
-	"Fluidos, Ondas y Temperatura",
 	"BIOFÍSICA"
 ]
 
