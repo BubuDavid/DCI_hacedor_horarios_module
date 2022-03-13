@@ -1,6 +1,5 @@
 import math
 import json
-from re import L 
 
 from .models.subject import Subject
 from .models.day import Day, TimeRange

@@ -3,6 +3,7 @@ from .file_tools import *
 from .tools import *
 from .permutations import *
 from .subject_tools import *
+from .models.subject_list import SubjectList
 
 def generate_subject_file(url, file_name, colum_names):
 	# Request the page
