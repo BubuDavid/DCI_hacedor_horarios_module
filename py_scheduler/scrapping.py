@@ -29,3 +29,24 @@ def get_content_rows(rows):
 		pd_rows.append(pd_row)
 
 	return pd_rows
+
+def scrap(url, column_names):
+	# Request the page
+	print("Fetching the page...")
+	html_page = fetch_page(url)
+	# Get all the rows
+	rows = get_rows(html_page)
+	# Get the column names
+	table_column_names = get_column_names(column_names)
+	# Get the rows in a python matrix (list of lists)
+	list_rows = get_content_rows(rows[1:])
+	# Create a new subject list
+	new_subjects_list = []
+
+	for row in list_rows:
+		new_subject = {}
+		for name, info in zip(table_column_names, row):
+			new_subject[name] = info
+		new_subjects_list.append(new_subject)
+
+	return new_subjects_list
