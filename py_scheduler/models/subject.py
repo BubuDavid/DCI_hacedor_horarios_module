@@ -13,6 +13,9 @@ class Subject:
 	'professor_email1',
 	'professor2',
 	'professor_email2',
+	'day1',
+	'day2',
+	'day3'
 	]
 	def __init__(
 		self,
@@ -24,6 +27,9 @@ class Subject:
 		professor_email1: str = None,
 		professor2      : str = None,
 		professor_email2: str = None,
+		day1            : str = None,
+		day2            : str = None,
+		day3            : str = None,
 		**kwargs
 	) -> None:
 		self._id              = _id
@@ -34,6 +40,10 @@ class Subject:
 		self.professor_email1 = professor_email1
 		self.professor2       = professor2
 		self.professor_email2 = professor_email2
+		self.day1             = day1
+		self.day2             = day2
+		self.day3             = day3
+
 
 	def __str__(self) -> str:
 		params = ''

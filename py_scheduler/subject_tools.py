@@ -104,6 +104,12 @@ def from_fields_to_subject(fields):
 	sub_items = {}
 	for c_name, value in fields.items():
 		sub_items[c_name.lower()] = value
+		if c_name == 'DAY/HOUR/ROOM1':
+			sub_items['day1'] = value
+		if c_name == 'DAY/HOUR/ROOM2':
+			sub_items['day2'] = value
+		if c_name == 'DAY/HOUR/ROOM3':
+			sub_items['day3'] = value
 	
 	sub_items["time_zones"] = create_days(sub_items)
 	return Subject(**sub_items)
